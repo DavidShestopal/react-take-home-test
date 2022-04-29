@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Paper, Typography } from "@mui/material";
-import Ballot from "./Ballot";
+import NomineesList from "./NomineeList";
+import ResultsModal from "./ResultsModal";
 
 export default function BallotList() {
   const [categories, setCategories] = useState([]);
-  console.log(categories);
+  const [selectedNominees, setSelectedNominees] = useState({});
+  console.log(selectedNominees);
 
   useEffect(() => {
     axios
@@ -23,7 +25,6 @@ export default function BallotList() {
           }}
         >
           <div style={{ border: "1px solid black" }}>
-            {" "}
             <Typography
               gutterBottom
               variant="h3"
@@ -34,9 +35,18 @@ export default function BallotList() {
             </Typography>
           </div>
 
-          <Ballot nominees={category} />
+          <NomineesList
+            nominees={category.items}
+            onNomineeSelected={(nominee) =>
+              setSelectedNominees((allSelectedNominees) => ({
+                ...allSelectedNominees,
+                [category.id]: nominee,
+              }))
+            }
+          />
         </Paper>
       ))}
+      <ResultsModal />
     </div>
   );
 }
