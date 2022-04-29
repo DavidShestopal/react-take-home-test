@@ -21,16 +21,6 @@ export default function ResultsModal({ nomineeSelectedResults }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  console.log(Object.entries(nomineeSelectedResults));
-
-  //   function hey(obj) {
-  //     return obj.name;
-  //   }
-
-  //   function hey({name}) {
-  //     return name
-  //   }
-
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
