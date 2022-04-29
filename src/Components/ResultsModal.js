@@ -16,10 +16,20 @@ const style = {
   p: 4,
 };
 
-export default function ResultsModal() {
+export default function ResultsModal({ nomineeSelectedResults }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  console.log(Object.entries(nomineeSelectedResults));
+
+  //   function hey(obj) {
+  //     return obj.name;
+  //   }
+
+  //   function hey({name}) {
+  //     return name
+  //   }
 
   return (
     <div>
@@ -45,9 +55,18 @@ export default function ResultsModal() {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             You're favorite actors were ...
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <div id="modal-modal-description" sx={{ mt: 2 }}>
+            {Object.entries(nomineeSelectedResults).map(
+              ([categoryTitle, selectedNominee]) => {
+                return (
+                  <div key={categoryTitle}>
+                    <h3> {categoryTitle}</h3>
+                    <p>{selectedNominee.title}</p>
+                  </div>
+                );
+              }
+            )}
+          </div>
         </Box>
       </Modal>
     </div>

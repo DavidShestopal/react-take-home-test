@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Nominee from "./Nominee";
 
 export default function NomineeList({
   nominees,
   onNomineeSelected,
-  categoryId,
+  selectedNominee,
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
@@ -13,6 +13,7 @@ export default function NomineeList({
           nominee={nominee}
           key={nominee.id}
           onNomineeSelected={onNomineeSelected}
+          selectedNominee={selectedNominee}
         />
       ))}
     </div>

@@ -40,13 +40,14 @@ export default function BallotList() {
             onNomineeSelected={(nominee) =>
               setSelectedNominees((allSelectedNominees) => ({
                 ...allSelectedNominees,
-                [category.id]: nominee,
+                [category.title]: nominee,
               }))
             }
+            selectedNominee={selectedNominees[category.title]}
           />
         </Paper>
       ))}
-      <ResultsModal />
+      <ResultsModal nomineeSelectedResults={selectedNominees} />
     </div>
   );
 }

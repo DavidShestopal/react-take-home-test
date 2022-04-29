@@ -9,7 +9,11 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function Nominee({ nominee, onNomineeSelected }) {
+export default function Nominee({
+  nominee,
+  onNomineeSelected,
+  selectedNominee,
+}) {
   return (
     <Stack
       spacing={2}
@@ -18,7 +22,15 @@ export default function Nominee({ nominee, onNomineeSelected }) {
       }}
       key={nominee.id}
     >
-      <Card sx={{ width: 345, mt: 2, mb: 2, ml: 2 }}>
+      <Card
+        sx={{
+          width: 345,
+          mt: 2,
+          mb: 2,
+          ml: 2,
+          opacity: selectedNominee?.id === nominee.id ? 0.2 : 1.0,
+        }}
+      >
         <CardMedia
           component="img"
           height="340"
